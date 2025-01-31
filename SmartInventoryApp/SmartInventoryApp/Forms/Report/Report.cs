@@ -64,6 +64,11 @@ namespace SmartInventoryApp
             {
                 DateTime startDate = dtpStartDate.Value;
                 DateTime endDate = dtpEndDate.Value;
+                if(startDate > endDate)
+                {
+                    MessageBox.Show("Please select a Real Date");
+                    return;
+                }
                 StyleDataGridView(dataGridViewReport);
                 switch (cmbReportType.SelectedItem.ToString())
                 {

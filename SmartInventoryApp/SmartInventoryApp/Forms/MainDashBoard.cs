@@ -151,5 +151,10 @@ namespace SmartInventoryApp
             this.Hide();
             report.Show();
         }
+
+        private void lblInventoryValue_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

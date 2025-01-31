@@ -30,9 +30,7 @@
         {
             cmbProducts = new ComboBox();
             Products = new Label();
-            label1 = new Label();
             label2 = new Label();
-            txtTotalAmount = new TextBox();
             txtQuantity = new TextBox();
             dtpSaleDate = new DateTimePicker();
             label3 = new Label();
@@ -61,39 +59,24 @@
             // Products
             // 
             Products.AutoSize = true;
-            Products.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            Products.BackColor = Color.RosyBrown;
+            Products.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             Products.Location = new Point(42, 330);
             Products.Name = "Products";
-            Products.Size = new Size(71, 20);
+            Products.Size = new Size(80, 23);
             Products.TabIndex = 2;
             Products.Text = "Products";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(42, 453);
-            label1.Name = "label1";
-            label1.Size = new Size(102, 20);
-            label1.TabIndex = 3;
-            label1.Text = "TotalAmount";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.BackColor = Color.RosyBrown;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.Location = new Point(42, 392);
             label2.Name = "label2";
-            label2.Size = new Size(70, 20);
+            label2.Size = new Size(80, 23);
             label2.TabIndex = 4;
             label2.Text = "Quantity";
-            // 
-            // txtTotalAmount
-            // 
-            txtTotalAmount.Location = new Point(42, 476);
-            txtTotalAmount.Name = "txtTotalAmount";
-            txtTotalAmount.Size = new Size(149, 27);
-            txtTotalAmount.TabIndex = 5;
             // 
             // txtQuantity
             // 
@@ -104,7 +87,7 @@
             // 
             // dtpSaleDate
             // 
-            dtpSaleDate.Location = new Point(42, 529);
+            dtpSaleDate.Location = new Point(42, 498);
             dtpSaleDate.Name = "dtpSaleDate";
             dtpSaleDate.Size = new Size(250, 27);
             dtpSaleDate.TabIndex = 7;
@@ -112,15 +95,17 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(42, 506);
+            label3.BackColor = Color.RosyBrown;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.Location = new Point(41, 459);
             label3.Name = "label3";
-            label3.Size = new Size(70, 20);
+            label3.Size = new Size(81, 23);
             label3.TabIndex = 8;
             label3.Text = "SaleDate";
             // 
             // btnUpdateSale
             // 
+            btnUpdateSale.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnUpdateSale.Location = new Point(673, 352);
             btnUpdateSale.Name = "btnUpdateSale";
             btnUpdateSale.Size = new Size(94, 29);
@@ -131,7 +116,8 @@
             // 
             // btnAddSale
             // 
-            btnAddSale.Location = new Point(96, 593);
+            btnAddSale.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAddSale.Location = new Point(111, 546);
             btnAddSale.Name = "btnAddSale";
             btnAddSale.Size = new Size(94, 29);
             btnAddSale.TabIndex = 10;
@@ -141,6 +127,7 @@
             // 
             // btnSearchSales
             // 
+            btnSearchSales.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnSearchSales.Location = new Point(881, 282);
             btnSearchSales.Name = "btnSearchSales";
             btnSearchSales.Size = new Size(94, 29);
@@ -159,10 +146,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic);
+            label4.BackColor = Color.RosyBrown;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Italic);
             label4.Location = new Point(818, 12);
             label4.Name = "label4";
-            label4.Size = new Size(99, 20);
+            label4.Size = new Size(111, 23);
             label4.TabIndex = 13;
             label4.Text = "SearchName";
             // 
@@ -183,26 +171,29 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic);
+            label5.BackColor = Color.RosyBrown;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Italic);
             label5.Location = new Point(818, 182);
             label5.Name = "label5";
-            label5.Size = new Size(69, 20);
+            label5.Size = new Size(77, 23);
             label5.TabIndex = 16;
             label5.Text = "EndDate";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic);
+            label6.BackColor = Color.RosyBrown;
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Italic);
             label6.Location = new Point(818, 100);
             label6.Name = "label6";
-            label6.Size = new Size(78, 20);
+            label6.Size = new Size(86, 23);
             label6.TabIndex = 17;
             label6.Text = "StartDate";
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(974, 593);
+            btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBack.Location = new Point(12, 608);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(94, 29);
             btnBack.TabIndex = 18;
@@ -241,9 +232,7 @@
             Controls.Add(label3);
             Controls.Add(dtpSaleDate);
             Controls.Add(txtQuantity);
-            Controls.Add(txtTotalAmount);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(Products);
             Controls.Add(cmbProducts);
             Name = "Sales_Page";
@@ -257,9 +246,7 @@
         #endregion
         private ComboBox cmbProducts;
         private Label Products;
-        private Label label1;
         private Label label2;
-        private TextBox txtTotalAmount;
         private TextBox txtQuantity;
         private DateTimePicker dtpSaleDate;
         private Label label3;

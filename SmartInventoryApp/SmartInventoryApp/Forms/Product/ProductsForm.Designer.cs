@@ -40,15 +40,17 @@
             txtPrice = new TextBox();
             txtProductName = new TextBox();
             btnSearch = new Button();
-            txtSearch = new TextBox();
             ProductName = new Label();
             btnBack = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            cmbProducts = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
             SuspendLayout();
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(381, 587);
+            btnDelete.Location = new Point(415, 562);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 1;
@@ -58,7 +60,8 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(216, 587);
+            btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnUpdate.Location = new Point(291, 562);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(94, 29);
             btnUpdate.TabIndex = 2;
@@ -68,7 +71,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(49, 587);
+            btnAdd.Location = new Point(167, 562);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
             btnAdd.TabIndex = 4;
@@ -79,33 +82,33 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.DarkSlateBlue;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.BackColor = Color.RoyalBlue;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label1.Location = new Point(62, 510);
             label1.Name = "label1";
-            label1.Size = new Size(47, 20);
+            label1.Size = new Size(55, 23);
             label1.TabIndex = 5;
             label1.Text = "Stock";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.DarkSlateBlue;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.BackColor = Color.RoyalBlue;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.Location = new Point(62, 448);
             label2.Name = "label2";
-            label2.Size = new Size(43, 20);
+            label2.Size = new Size(49, 23);
             label2.TabIndex = 6;
             label2.Text = "Price";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = Color.DarkSlateBlue;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label3.BackColor = Color.RoyalBlue;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.Location = new Point(33, 391);
             label3.Name = "label3";
-            label3.Size = new Size(110, 20);
+            label3.Size = new Size(125, 23);
             label3.TabIndex = 7;
             label3.Text = "Product Name\n";
             // 
@@ -121,6 +124,7 @@
             // 
             // btnRefresh
             // 
+            btnRefresh.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnRefresh.Location = new Point(721, 338);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(141, 29);
@@ -152,6 +156,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnSearch.Location = new Point(897, 76);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(74, 29);
@@ -160,27 +165,21 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(721, 78);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(159, 27);
-            txtSearch.TabIndex = 14;
-            // 
             // ProductName
             // 
             ProductName.AutoSize = true;
-            ProductName.BackColor = Color.DarkSlateBlue;
-            ProductName.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            ProductName.BackColor = Color.RoyalBlue;
+            ProductName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             ProductName.Location = new Point(721, 44);
             ProductName.Name = "ProductName";
-            ProductName.Size = new Size(106, 20);
+            ProductName.Size = new Size(120, 23);
             ProductName.TabIndex = 15;
             ProductName.Text = "ProductName";
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(897, 587);
+            btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBack.Location = new Point(12, 587);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(94, 29);
             btnBack.TabIndex = 16;
@@ -188,15 +187,45 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button1.Location = new Point(415, 562);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Delete";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnDelete_Click;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button2.Location = new Point(167, 562);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 4;
+            button2.Text = "Add";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += btnAdd_Click;
+            // 
+            // cmbProducts
+            // 
+            cmbProducts.FormattingEnabled = true;
+            cmbProducts.Location = new Point(721, 77);
+            cmbProducts.Name = "cmbProducts";
+            cmbProducts.Size = new Size(151, 28);
+            cmbProducts.TabIndex = 17;
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateBlue;
             ClientSize = new Size(1003, 628);
+            Controls.Add(cmbProducts);
             Controls.Add(btnBack);
             Controls.Add(ProductName);
-            Controls.Add(txtSearch);
             Controls.Add(btnSearch);
             Controls.Add(txtProductName);
             Controls.Add(txtPrice);
@@ -206,7 +235,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(button2);
             Controls.Add(btnAdd);
+            Controls.Add(button1);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Name = "ProductsForm";
@@ -234,8 +265,10 @@
         private TextBox txtPrice;
         private TextBox txtProductName;
         private Button btnSearch;
-        private TextBox txtSearch;
         private Label ProductName;
         private Button btnBack;
+        private Button button1;
+        private Button button2;
+        private ComboBox cmbProducts;
     }
 }

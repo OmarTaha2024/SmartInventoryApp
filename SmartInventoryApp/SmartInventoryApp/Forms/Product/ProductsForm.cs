@@ -65,28 +65,47 @@ namespace SmartInventoryApp
 
             return true;
         }
+        private void ClearInputProductFields()
+        {
+            txtProductName.Text = "";
+            txtPrice.Text = "";
+            txtStock.Text = "";
 
+            txtProductName.Focus();
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
             if (!ValidateInput()) return;
+
             using (var context = new SmartInventoryDBContext())
             {
-                context.Database.ExecuteSqlRaw(
-            "EXEC AddProduct @ProductName, @Price, @Stock",
-            new SqlParameter("@ProductName", txtProductName.Text),
-            new SqlParameter("@Price", decimal.Parse(txtPrice.Text)),
-            new SqlParameter("@Stock", int.Parse(txtStock.Text))
-        );
+                var newProduct = new Product
+                {
+                    ProductName = txtProductName.Text,
+                    Price = decimal.Parse(txtPrice.Text),
+                    Stock = int.Parse(txtStock.Text)
+                };
+
+                context.Products.Add(newProduct);
+                context.SaveChanges();
             }
 
             LoadProducts();
             DataRefreshManager.NotifyDataChanged();
             MessageBox.Show("Product added successfully!");
+            ClearInputProductFields();
         }
 
 
-
+        private void LoadProduct()
+        {
+            using (var context = new SmartInventoryDBContext())
+            {
+                cmbProducts.DataSource = context.Products.ToList();
+                cmbProducts.DisplayMember = "ProductName";
+                cmbProducts.ValueMember = "ProductId";
+            }
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             using (var context = new SmartInventoryDBContext())
@@ -130,6 +149,8 @@ namespace SmartInventoryApp
         {
             DataRefreshManager.OnDataChanged += RefreshPageData;
             LoadProducts();
+            LoadProduct();
+
             ApplyGlobalStyles(this);
             AddToolTips();
         }
@@ -218,7 +239,7 @@ namespace SmartInventoryApp
         {
             using (var context = new SmartInventoryDBContext())
             {
-                var query = txtSearch.Text.ToLower();
+                var query = cmbProducts.Text.ToLower();
                 var filteredProducts = context.Products
                     .Where(p => p.ProductName.ToLower().Contains(query))
                     .ToList();
@@ -229,6 +250,7 @@ namespace SmartInventoryApp
 
         private void ProductsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+
             DataRefreshManager.OnDataChanged -= RefreshPageData;
         }
 

@@ -43,7 +43,18 @@ namespace SmartInventoryApp
         private void LoadSales()
         {
             string connectionString = "Data Source=.\\SQLEXPRESS01;Initial Catalog=SmartInventoryDB;Integrated Security=True;Encrypt=False"; 
-            string query = "SELECT * FROM Sales";
+            string query = @"
+              SELECT  
+            Sales.SaleID, 
+            Sales.ProductID, 
+            Products.ProductName, 
+            Sales.Quantity, 
+            Sales.TotalAmount, 
+            Sales.SaleDate
+            FROM Products 
+            INNER JOIN Sales ON Products.ProductID = Sales.ProductID
+            ORDER BY Products.ProductName ASC;
+                ";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -80,7 +91,13 @@ namespace SmartInventoryApp
                 cmbProducts.ValueMember = "ProductId";
             }
         }
+        private void ClearInputSaleFields()
+        {
+            txtQuantity.Text = "";
+            
 
+            txtQuantity.Focus();
+        }
         private void btnAddSale_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
@@ -89,16 +106,32 @@ namespace SmartInventoryApp
                 return;
             }
 
+            if (cmbProducts.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a product.");
+                return;
+            }
+
+            int productId = (int)cmbProducts.SelectedValue;
+
             using (var context = new SmartInventoryDBContext())
             {
-                int productId = (int)cmbProducts.SelectedValue;
-
                 var product = context.Products.FirstOrDefault(p => p.ProductID == productId);
+
                 if (product == null)
                 {
-                    MessageBox.Show("Selected product not found.");
+                    MessageBox.Show("Selected product not found in the database.");
                     return;
                 }
+
+                if (product.Stock < quantity)
+                {
+                    MessageBox.Show("Insufficient stock available!");
+                    return;
+                }
+
+                product.Stock -= quantity;
+                context.SaveChanges(); 
 
                 decimal totalAmount = quantity * product.Price;
 
@@ -111,12 +144,13 @@ namespace SmartInventoryApp
                 };
 
                 context.Sales.Add(newSale);
-                context.SaveChanges();
+                context.SaveChanges(); 
             }
 
             LoadSales();
             DataRefreshManager.NotifyDataChanged();
             MessageBox.Show("Sale added successfully!");
+            ClearInputSaleFields();
         }
 
         private void btnUpdateSale_Click(object sender, EventArgs e)

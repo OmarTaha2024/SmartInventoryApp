@@ -42,7 +42,7 @@ namespace SmartInventoryApp
         }
         private void LoadPurchases()
         {
-            string connectionString = "Data Source=.\\SQLEXPRESS01;Initial Catalog=SmartInventoryDB;Integrated Security=True;Encrypt=False"; 
+            string connectionString = "Data Source=.\\SQLEXPRESS01;Initial Catalog=SmartInventoryDB;Integrated Security=True;Encrypt=False";
             string query = "SELECT  Purchases.PurchaseID, Purchases.ProductID, Products.ProductName, Purchases.SupplierID,Suppliers.SupplierName, Purchases.Quantity, Purchases.TotalCost, Purchases.PurchaseDate\r\nFROM     Products INNER JOIN\r\n                  Purchases ON Products.ProductID = Purchases.ProductID INNER JOIN\r\n                  Suppliers ON Purchases.SupplierID = Suppliers.SupplierID";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -89,11 +89,17 @@ namespace SmartInventoryApp
             LoadPurchases();
             LoadProductsAndSuppliers();
         }
-
+        private void ClearInputPurchaseFields()
+        {
+            txtQuantity.Text = "";
+            txtTotalCost.Text = "";
+            txtQuantity.Focus();
+        }
         private void btnAddPurchase_Click(object sender, EventArgs e)
         {
+
             if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0 ||
-        !decimal.TryParse(txtTotalCost.Text, out decimal totalCost) || totalCost <= 0)
+                !decimal.TryParse(txtTotalCost.Text, out decimal totalCost) || totalCost <= 0)
             {
                 MessageBox.Show("Please enter valid quantity and total cost.");
                 return;
@@ -101,9 +107,18 @@ namespace SmartInventoryApp
 
             using (var context = new SmartInventoryDBContext())
             {
+                int productId = (int)cmbProducts.SelectedValue;
+
+                var product = context.Products.FirstOrDefault(p => p.ProductID == productId);
+                if (product != null)
+                {
+                    product.Stock += quantity;
+                    product.Price = totalCost/quantity ;
+                }
+
                 var newPurchase = new Purchase
                 {
-                    ProductID = (int)cmbProducts.SelectedValue,
+                    ProductID = productId,
                     SupplierID = (int)cmbSuppliers.SelectedValue,
                     Quantity = quantity,
                     TotalCost = totalCost,
@@ -117,6 +132,8 @@ namespace SmartInventoryApp
             LoadPurchases();
             DataRefreshManager.NotifyDataChanged();
             MessageBox.Show("Purchase added successfully!");
+            ClearInputPurchaseFields();
+
         }
 
         private void btnUpdatePurchase_Click(object sender, EventArgs e)
@@ -225,6 +242,36 @@ namespace SmartInventoryApp
             var mainDashBoard = new MainDashBoard();
             mainDashBoard.Show();
             this.Hide();
+        }
+
+        private void ClearInputSupplierFields()
+        {
+            txtSupplier.Text = "";
+            txtAddress.Text = "";
+            txtPhone.Text = "";
+            txtSupplier.Focus(); 
+        }
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            using (var context = new SmartInventoryDBContext())
+            {
+               
+
+                var newSupplier
+                    = new Supplier
+                {
+                   SupplierName = txtSupplier.Text ,
+                   Address = txtAddress.Text ,
+                  ContactNumber = txtPhone.Text ,
+                    };
+
+                context.Suppliers.Add(newSupplier);
+                context.SaveChanges();
+                LoadProductsAndSuppliers();
+                MessageBox.Show("Supplier added successfully!");
+                ClearInputSupplierFields();
+
+            }
         }
     }
 }

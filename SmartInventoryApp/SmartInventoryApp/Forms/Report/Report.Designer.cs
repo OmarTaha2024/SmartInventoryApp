@@ -63,9 +63,11 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Brown;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label1.Location = new Point(751, 37);
             label1.Name = "label1";
-            label1.Size = new Size(94, 20);
+            label1.Size = new Size(108, 23);
             label1.TabIndex = 2;
             label1.Text = "Report Type";
             // 
@@ -86,18 +88,22 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Brown;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.Location = new Point(751, 112);
             label2.Name = "label2";
-            label2.Size = new Size(80, 20);
+            label2.Size = new Size(93, 23);
             label2.TabIndex = 5;
             label2.Text = "Start Date";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Brown;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.Location = new Point(751, 176);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(83, 23);
             label3.TabIndex = 6;
             label3.Text = "End Date";
             // 
