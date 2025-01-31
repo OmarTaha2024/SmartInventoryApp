@@ -1,0 +1,32 @@
+CREATE TABLE Products (
+    ProductID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductName NVARCHAR(100) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Stock INT NOT NULL,
+    CreatedDate DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Sales (
+    SaleID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID),
+    Quantity INT NOT NULL,
+    TotalAmount DECIMAL(10, 2) NOT NULL,
+    SaleDate DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Suppliers (
+    SupplierID INT IDENTITY(1,1) PRIMARY KEY,
+    SupplierName NVARCHAR(100) NOT NULL,
+    ContactNumber NVARCHAR(15),
+    Address NVARCHAR(200)
+);
+
+
+CREATE TABLE Purchases (
+    PurchaseID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID),
+    SupplierID INT NOT NULL FOREIGN KEY REFERENCES Suppliers(SupplierID),
+    Quantity INT NOT NULL,
+    TotalCost DECIMAL(10, 2) NOT NULL,
+    PurchaseDate DATETIME DEFAULT GETDATE()
+);
