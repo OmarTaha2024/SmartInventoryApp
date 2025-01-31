@@ -1,97 +1,91 @@
-SmartInventoryApp
+# SmartInventoryApp
 
-📌 Overview
+## 📌 Overview
 
 SmartInventoryApp is an intelligent inventory management system designed to help businesses and individuals efficiently track and manage their inventory. This application provides real-time insights, automated alerts, and user-friendly dashboards to enhance productivity and prevent stock issues.
 
-🚀 Features
+## 🚀 Features
 
-📊 Dashboard – Get an overview of inventory status, stock levels, and alerts.
+- 📊 **Dashboard** – Get an overview of inventory status, stock levels, and alerts.
+- 🔍 **Product Management** – Add, edit, and remove inventory items easily.
+- 📦 **Stock Tracking** – Track incoming and outgoing stock movements.
+- ⏰ **Low Stock Alerts** – Get notified when stock levels are low.
+- 📅 **Expiration Date Tracking** – Manage perishable items with automated alerts.
+- 🔄 **Bulk Import & Export** – CSV support for easy inventory management.
+- 🏷️ **Barcode & QR Code Support** – Scan items for quick access.
+- 📜 **Reports & Analytics** – Generate detailed inventory reports.
 
-🔍 Product Management – Add, edit, and remove inventory items easily.
+## 🏗️ Installation
 
-📦 Stock Tracking – Track incoming and outgoing stock movements.
-
-⏰ Low Stock Alerts – Get notified when stock levels are low.
-
-📅 Expiration Date Tracking – Manage perishable items with automated alerts.
-
-🔄 Bulk Import & Export – CSV support for easy inventory management.
-
-🏷️ Barcode & QR Code Support – Scan items for quick access.
-
-📜 Reports & Analytics – Generate detailed inventory reports.
-
-🏗️ Installation
-
-Prerequisites
+### Prerequisites
 
 Ensure you have the following installed on your system:
 
-Visual Studio
+- Visual Studio
+- .NET Framework
+- SQL Server Management Studio (SSMS)
 
-.NET Framework
+### Steps
 
-SQL Server Management Studio (SSMS)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/OmarTaha2024/SmartInventoryApp.git
+   cd SmartInventoryApp
+   ```
+2. **Open the project in Visual Studio**
+   - Open `SmartInventoryApp.sln` in Visual Studio.
+3. **Restore NuGet Packages**
+   - In Visual Studio, go to `Tools` > `NuGet Package Manager` > `Manage NuGet Packages for Solution` and restore packages.
+4. **Configure Database**
+   - Open SQL Server Management Studio (SSMS).
+   - Create a new database and update the connection string in `App.config`.
+5. **Run the application**
+   - Press `F5` or click `Start` in Visual Studio.
 
-Steps
+## 🛠️ Technologies Used
 
-Clone the repository
+### 💻 Programming Language
 
-git clone https://github.com/OmarTaha2024/SmartInventoryApp.git
-cd SmartInventoryApp
+- C#
 
-Open the project in Visual Studio
+### 🏗️ Framework
 
-Open SmartInventoryApp.sln in Visual Studio.
+- .NET (WinForms)
 
-Restore NuGet Packages
+### 🗄️ Database
 
-In Visual Studio, go to Tools > NuGet Package Manager > Manage NuGet Packages for Solution and restore packages.
+- SQL Server Management Studio (SSMS)
 
-Configure Database
+### 🔗 Data Access
 
-Open SQL Server Management Studio (SSMS).
+- ADO.NET
+- Entity Framework Core
 
-Create a new database and update the connection string in App.config.
+### 🎨 UI Design
 
-Run the application
+- WinForms
+- **Programming Language:** C#
+- **Framework:** .NET (WinForms)
+- **Database:** SQL Server Management Studio (SSMS)
+- **Data Access:** ADO.NET & Entity Framework Core
+- **UI Design:** WinForms
 
-Press F5 or click Start in Visual Studio.
+## 🖥️ Usage
 
-🛠️ Technologies Used
+1. Log in to the system.
+2. Navigate through the dashboard.
+3. Add new inventory items with details like name, quantity, price, and expiration date.
+4. Track inventory movements and view reports.
+5. Receive automatic alerts for low stock or expired products.
 
-Programming Language: C#
-
-Framework: .NET (WinForms)
-
-Database: SQL Server Management Studio (SSMS)
-
-Data Access: ADO.NET & Entity Framework Core
-
-UI Design: WinForms
-
-🖥️ Usage
-
-Log in to the system.
-
-Navigate through the dashboard.
-
-Add new inventory items with details like name, quantity, price, and expiration date.
-
-Track inventory movements and view reports.
-
-Receive automatic alerts for low stock or expired products.
-
-🤝 Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Follow these steps:
 
-Fork the repository.
+1. Fork the repository.
+2. Create a new branch (`feature/your-feature`).
+3. Commit your changes and push to your fork.
+4. Submit a pull request.
 
-Create a new branch (feature/your-feature).
 
-Commit your changes and push to your fork.
-
-Submit a pull request.
 
